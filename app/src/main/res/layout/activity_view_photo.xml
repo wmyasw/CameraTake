@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <!--<include layout="@layout/title"-->
+             <!--android:id="@+id/top"-->
+        <!--/>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:background="#000000"/>
+
+    <TextView
+        android:id="@+id/tv_index"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="#FF0000"
+        android:text=""
+        android:background="@android:color/transparent"
+        android:visibility="gone"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/Black4"
+       android:gravity="center_vertical"
+       android:orientation="horizontal"
+        android:id="@+id/rl_bottom">
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/btn_camera_close"/>
+
+        <ImageView
+            android:id="@+id/iv_ok"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="31dp"
+            android:background="@drawable/ic_vector_check"
+            android:scaleType="centerInside"/>
+
+    </RelativeLayout>
+</LinearLayout>

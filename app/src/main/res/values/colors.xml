@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="float_transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="text_wifi">#ff804b</color>
+    <color name="good_hiht">#c0c0c0</color>
+    <color name="order_item">#06af77</color>
+    <color name="Black4">#121415</color>
+    <color name="Black5">#242125</color>
+    <color name="Black6">#313641</color>
+
+    <color name="White">#ffffff</color>
+    <color name="title_bg">#fafafa</color>
+    <color name="Transparent">#00000000</color>
+    <color name="short_video_red">#ff4747</color>
+    <color name="Gray">#eeeeee</color>
+    <color name="bg_transparent50">#50000000</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <!-- 标题字,主要内容字,输入框文字,内容类别标题信息 -->
+    <color name="text_gray_lable">#484b59</color>
+    <color name="dialog_ok_text">#ff804b</color>
+    <color name="dialog_cancel_text">#616161</color>
+    <color name="dialog_line">#dfdfdf</color>
+</resources>

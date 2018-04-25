@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_weel"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        >
+
+        <TextView
+            android:id="@+id/tv_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:gravity="left"
+            android:padding="10dp"
+            android:text="版面号："
+
+            android:textColor="@color/Black4"/>
+
+        <EditText
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:minWidth="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_label"
+            android:layout_alignBottom="@+id/tv_label"
+            android:layout_toEndOf="@+id/tv_label"
+            android:gravity="left|center"
+            android:padding="10dp"
+            android:background="@null"
+            android:hint="请选择版面号"
+            android:textColor="@color/Black6"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_weel"
+        android:layout_above="@+id/bottom_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <!--<com.jdjt.retail.view.weelview.WheelView-->
+        <!--android:id="@+id/id_name"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1" >-->
+        <!--</com.jdjt.retail.view.weelview.WheelView>-->
+        <com.wmy.main.view.QNumberPicker
+            android:id="@+id/number_picker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:divider="@color/Transparent"
+            android:background="@color/white"
+            android:layout_weight="1"></com.wmy.main.view.QNumberPicker>
+
+        <com.wmy.main.view.QNumberPicker
+            android:id="@+id/number_picker_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:divider="@color/Transparent"
+            android:layout_weight="1"></com.wmy.main.view.QNumberPicker>
+        <!--<com.jdjt.retail.view.weelview.WheelView-->
+        <!--android:id="@+id/id_code"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1" >-->
+        <!--</com.jdjt.retail.view.weelview.WheelView>-->
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        >
+
+        <TextView
+            android:id="@+id/tv_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="8dp"
+            android:gravity="right"
+            android:padding="10dp"
+            android:text="取消"
+
+            android:textColor="@color/Black4"/>
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:gravity="left"
+
+            android:padding="10dp"
+            android:text="确定"
+            android:textColor="@color/Black4"/>
+
+    </RelativeLayout>
+</RelativeLayout>

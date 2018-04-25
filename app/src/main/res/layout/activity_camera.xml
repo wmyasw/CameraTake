@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+
+
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SurfaceView
+            android:id="@+id/mSurfaceview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:paddingTop="10dp">
+
+        <com.github.florent37.camerafragment.widgets.CameraSettingsView
+            android:id="@+id/settings_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            />
+
+        <com.github.florent37.camerafragment.widgets.FlashSwitchView
+            android:id="@+id/flash_switch_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true" />
+
+        <com.github.florent37.camerafragment.widgets.CameraSwitchView
+            android:id="@+id/front_back_camera_switcher"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/homecamera_bottom_relative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+
+        <ImageButton
+            android:id="@+id/shutter"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/circle"
+            android:onClick="shutter"
+            />
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/bg_transparent50"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:padding="12dp"-->
+        <!--android:id="@+id/rl_bottom">-->
+
+        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:scaleType="centerCrop"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/iv_preview"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginLeft="20dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="56dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="56dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_alignParentLeft="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:background="@drawable/round_rectangle_white"&ndash;&gt;-->
+        <!--&lt;!&ndash;/>&ndash;&gt;-->
+
+        <!--<ImageButton-->
+        <!--android:id="@+id/shutter"-->
+        <!--android:layout_width="56dp"-->
+        <!--android:layout_height="56dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:background="@drawable/circle"-->
+        <!--android:onClick="shutter"-->
+        <!--/>-->
+        <!--</RelativeLayout>-->
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

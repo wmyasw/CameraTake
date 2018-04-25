@@ -1,0 +1,130 @@
+<resources>
+    <dimen name="dimen_margin_circle">4dp</dimen>
+    <dimen name="dimen_margin_circle.negative">-4dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="shop_detail_margin">5dp</dimen>
+    <dimen name="slidingmenu_offset">60dp</dimen>
+    <dimen name="list_padding">10dp</dimen>
+    <dimen name="shadow_width">15dp</dimen>
+    <dimen name="map_textsize_default">18sp</dimen>
+    <!-- 20号字体 -->
+    <dimen name="textsize_20">11sp</dimen>
+    <dimen name="textsize_21">11.52sp</dimen>
+
+    <!-- 22号字体 -->
+    <dimen name="textsize_22">12sp</dimen>
+    <!-- 24号字体 -->
+    <dimen name="textsize_24">13sp</dimen>
+    <!-- 24号字体 -->
+    <dimen name="textsize_25">13.44sp</dimen>
+    <!-- 26号字体 -->
+    <dimen name="textsize_26">14sp</dimen>
+    <!-- 28号字体 -->
+    <dimen name="textsize_28">15sp</dimen>
+    <!-- 29号字体 -->
+    <dimen name="textsize_29">16.32sp</dimen>
+    <!-- 30号字体 -->
+    <dimen name="textsize_30">17sp</dimen>
+    <!-- 32号字体 -->
+    <dimen name="textsize_32">18sp</dimen>
+    <!-- 36号字体 -->
+    <dimen name="textsize_36">20sp</dimen>
+    <dimen name="textsize_46">24sp</dimen>
+    <!-- 48号字体 -->
+    <dimen name="textsize_48">26sp</dimen>
+    <!-- 50号字体 -->
+    <dimen name="textsize_50">28sp</dimen>
+    <!-- 72号字体 -->
+    <dimen name="textsize_72">40sp</dimen>
+    <integer name="num_cols">1</integer>
+    <dimen name="margin_footer_bottom">30dp</dimen>
+
+    <!-- add by renjianhong for map-->
+    <dimen name="t_xxxl">19sp</dimen>
+    <dimen name="t_xxl">18sp</dimen>
+    <dimen name="t_xl">17sp</dimen>
+    <dimen name="t_l">16sp</dimen>
+    <dimen name="t_m">15sp</dimen>
+    <dimen name="t_s">14sp</dimen>
+    <dimen name="t_xs">13sp</dimen>
+    <dimen name="t_xxs">12sp</dimen>
+    <dimen name="t_xxxs">11sp</dimen>
+    <dimen name="title_1">30sp</dimen>
+    <dimen name="title_2">25sp</dimen>
+    <dimen name="layout_dlarge">20dp</dimen>
+    <dimen name="layout_large">15dp</dimen>
+    <dimen name="layout_normal">10dp</dimen>
+    <dimen name="layout__small">5dp</dimen>
+    <dimen name="layout_small_x">2dp</dimen>
+    <dimen name="action_bar_height">50dp</dimen>
+    <dimen name="map_floor_name_width">50dp</dimen>
+
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="keyline_1">16dp</dimen>
+    <dimen name="keyline_1_minus_8dp">8dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_5dp">5dp</dimen>
+    <dimen name="margin_3dp">3dp</dimen>
+    <dimen name="keyline_2">72dp</dimen>
+    <dimen name="keyline_2_minus_16dp">56dp</dimen>
+    <dimen name="action_bar_auto_hide_min_y">152dp</dimen>
+    <dimen name="action_bar_auto_hide_sensivity">48dp</dimen>
+    <dimen name="block_gap">2dp</dimen>
+    <dimen name="floor_list_width">40dp</dimen>
+    <dimen name="layout_small">5dp</dimen>
+    <dimen name="img_dimen">32dp</dimen>
+
+
+    <!--fengmap 未做适配-->
+    <dimen name="fm_window_path_title_margin_top">10dp</dimen>
+    <dimen name="fm_window_path_content_margin_top">15dp</dimen>
+
+    <dimen name="fm_window_model_title_margin_top">10dp</dimen>
+    <dimen name="fm_window_model_title_margin_bottom">10dp</dimen>
+    <dimen name="fm_window_model_c_space">5dp</dimen>
+    <dimen name="fm_window_model_c_margin_lr">42dp</dimen>
+    <dimen name="fm_window_model_c_height">80dp</dimen>
+    <dimen name="fm_window_model_c_margin_bottom">42dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
+
+    <!--add for sweetdialog-->
+    <dimen name="flexible_space_image_height">240dp</dimen>
+    <dimen name="title_height">45dp</dimen>
+    <dimen name="alert_width">290dp</dimen>
+    <dimen name="common_circle_width">3dp</dimen>
+    <dimen name="progress_circle_radius">34dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="space">8dp</dimen>
+    <!-- 日历定义的一些尺寸 -->
+    <dimen name="text_size_day">14sp</dimen>
+    <dimen name="text_size_tag">12sp</dimen>
+    <dimen name="text_size_month">16sp</dimen>
+    <dimen name="text_size_day_name">10sp</dimen>
+    <dimen name="header_month_height">50dip</dimen>
+    <dimen name="selected_day_radius">16dip</dimen>
+    <dimen name="calendar_height">370dip</dimen>
+
+    <dimen name="item_decoration_title_height">30dp</dimen>
+    <dimen name="item_decoration_title_start_margin">16dp</dimen>
+    <dimen name="item_decoration_title_fontsize">12sp</dimen>
+    <dimen name="text_14">14.4sp</dimen>
+    <dimen name="pickerview_topbar_height">44dp</dimen>
+
+    <!-- 顶部按钮padding -->
+    <dimen name="pickerview_topbar_padding">20dp</dimen>
+
+    <!-- 顶部按钮文字大小 -->
+    <dimen name="pickerview_topbar_btn_textsize">17sp</dimen>
+    <dimen name="pickerview_topbar_title_textsize">18sp</dimen>
+    <!-- 选项文字大小 -->
+    <dimen name="pickerview_textsize">20sp</dimen>
+    <dimen name="dialog_width">118dp</dimen>
+</resources>

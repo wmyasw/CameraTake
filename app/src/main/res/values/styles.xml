@@ -1,0 +1,108 @@
+<resources>
+    <style name="AppTheme.Base" parent="AppTheme.NoActionBar">
+        <!--<item name="android:textColorPrimary">@color/white</item>-->
+        <item name="colorControlHighlight">@color/Black6</item>
+        <!--选中状态icon的颜色和字体颜色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--正常状态下字体颜色和icon颜色-->
+        <item name="android:textColorPrimary">@color/Black6</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:listDivider">@drawable/dialog_background</item>
+         
+        <item name="android:actionMenuTextAppearance">@style/AppBaseMenuStyle</item>
+        <!--<item name="actionButtonStyle">@style/AppBaseActionButtonStyle</item>-->
+        <item name="actionMenuTextAppearance">@style/AppBaseMenuStyle</item>
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <!--<item name="android:windowExitTransition">@transition/slide</item>-->
+        <!--<item name="android:windowEnterAnimation">@transition/slide</item>-->
+        <!--<item name="android:windowReenterTransition">@transition/slide</item>-->
+        <!--<item name="android:toolbarStyle">-->
+        <!--@style/AppTheme.Toolbar-->
+        <!--</item>-->
+    </style>
+    <style name="AppTheme.Base.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">25dp</item>
+    </style>
+    <style name="AppTheme.Base.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppBaseMenuStyle" parent="@style/AppTheme.AppBarOverlay">
+        <!--<item name="android:textColor">@drawable/text_color_enable</item>-->
+        <!--<item name="colorControlNormal">@drawable/text_color_enable</item>-->
+        <item name="android:textSize">13.44sp</item>
+
+        <!--<item name="android:textStyle">normal</item>-->
+    </style>
+    <!-- Base application theme. -->
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.Toolbar" parent="Base.Widget.AppCompat.Toolbar">
+        <!--<item name="tabBackground">@drawable/tab_selected_bg</item>-->
+        <!--<item name="tabIndicatorColor">@color/half_full</item>-->
+        <item name="android:textSize">@dimen/textsize_32</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+        <item name="titleMargin">0dp</item>
+
+    </style>
+
+    <style name="alert_dialog" parent="android:Theme.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowBackground">@color/float_transparent</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.4</item>
+    </style>
+    <style name="dialog_orange_button_cancel" parent="android:Widget.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingLeft">21dp</item>
+        <item name="android:paddingRight">21dp</item>
+        <item name="android:textColor">@color/good_hiht</item>
+    </style>
+    <style name="dialog_orange_button_ok" parent="android:Widget.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingLeft">21dp</item>
+        <item name="android:paddingRight">21dp</item>
+        <item name="android:textColor">@color/order_item</item>
+    </style>
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+    <style name="CustomAlertDialogBackground" parent="android:Theme.Dialog">
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+    <style name="AlertDialogBackground" parent="android:Theme.Dialog">
+        <!--<item name="android:background">#00000000</item>-->
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+        <!--<item name="android:windowIsFloating">true</item>-->
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowFrame">@null</item> <!--边框-->
+        <item name="android:windowBackground">@android:color/transparent</item> <!-- 背景透明 -->
+        <item name="android:windowNoTitle">true</item> <!--无标题-->
+        <item name="android:windowIsTranslucent">true</item> <!--半透明-->
+        <item name="android:windowIsFloating">true</item> <!--是否浮现在activity之上-->
+        <item name="android:background">@drawable/dialog_shape</item>
+    </style>
+
+</resources>

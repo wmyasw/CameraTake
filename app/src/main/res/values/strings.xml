@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Take_Picture</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">请输入用户名</string>
+    <string name="prompt_password">请输入密码</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="quit">退出</string>
+    <string name="settings">设置</string>
+    <string name="help">帮助</string>
+    <string name="string_help_text">当前缺少必要权限，请点击“设置”-“权限”-打开所需权限。最后点击两次后退按钮，即可返回</string>
+    <string name="selection">选中%s个</string>
+    <string name="select_all">全选</string>
+    <string name="unselect_all">全不选</string>
+    <string name="first_hint">温馨提示 </string>
+</resources>

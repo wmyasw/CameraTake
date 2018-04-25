@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SourceProgressBar">
+        <attr name="sourceBorderWidth" format="dimension"/>
+        <attr name="sourceBorderColor" format="color"/>
+        <attr name="sourceLoadingColor" format="color"/>
+        <attr name="sourceUnLoadingColor" format="color"/>
+        <attr name="sourceRadius" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="FlikerProgressBar">
+        <attr name="textSize" format="dimension"/>
+        <attr name="loadingColor" format="color"/>
+        <attr name="stopColor" format="color"/>
+        <attr name="finishColor" format="color"/>
+        <attr name="progressBar_radius" format="dimension"/>
+        <attr name="borderWidth" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="HorizontalListView">
+        <attr name="dividerWidth" format="dimension"/>
+        <attr name="android:divider"/>
+        <attr name="android:requiresFadingEdge"/>
+        <attr name="android:fadingEdgeLength"/>
+    </declare-styleable>
+    <declare-styleable name="ImageCorners">
+        <attr name="roundWidth" format="dimension"/>
+        <attr name="roundHeight" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="PagerSlidingTabStrip">
+        <attr name="pstsIndicatorColor" format="color"/>
+        <attr name="pstsUnderlineColor" format="color"/>
+        <attr name="pstsDividerColor" format="color"/>
+        <attr name="pstsIndicatorHeight" format="dimension"/>
+        <attr name="pstsUnderlineHeight" format="dimension"/>
+        <attr name="pstsDividerPadding" format="dimension"/>
+        <attr name="pstsTabPaddingLeftRight" format="dimension"/>
+        <attr name="pstsScrollOffset" format="dimension"/>
+        <attr name="pstsTabBackground" format="reference"/>
+        <attr name="pstsShouldExpand" format="boolean"/>
+        <attr name="pstsTextAllCaps" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="SlidingUpPanelLayout">
+        <attr name="umanoPanelHeight" format="dimension"/>
+        <attr name="umanoShadowHeight" format="dimension"/>
+        <attr name="umanoParallaxOffset" format="dimension"/>
+        <attr name="umanoFadeColor" format="color"/>
+        <attr name="umanoFlingVelocity" format="integer"/>
+        <attr name="umanoDragView" format="reference"/>
+        <attr name="umanoScrollableView" format="reference"/>
+        <attr name="umanoOverlay" format="boolean"/>
+        <attr name="umanoClipPanel" format="boolean"/>
+        <attr name="umanoAnchorPoint" format="float"/>
+        <attr name="umanoInitialState" format="enum">
+            <enum name="expanded" value="0"/>
+            <enum name="collapsed" value="1"/>
+            <enum name="anchored" value="2"/>
+            <enum name="hidden" value="3"/>
+        </attr>
+        <attr name="umanoScrollInterpolator" format="reference"/>
+    </declare-styleable>
+
+    <!--<declare-styleable name="Rotate3dAnimation">-->
+        <!--<attr name="rollType" format="enum">-->
+            <!--<enum name="x" value="0"/>-->
+            <!--<enum name="y" value="1"/>-->
+            <!--<enum name="z" value="2"/>-->
+        <!--</attr>-->
+        <!--<attr name="fromDeg" format="float"/>-->
+        <!--<attr name="toDeg" format="float"/>-->
+        <!--<attr name="pivotX" format="fraction"/>-->
+        <!--<attr name="pivotY" format="fraction"/>-->
+    <!--</declare-styleable>-->
+
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+    </declare-styleable>
+    <declare-styleable name="SubsamplingScaleImageView">
+        <attr name="src" format="reference"/>
+        <attr name="assetName" format="string"/>
+        <attr name="panEnabled" format="boolean"/>
+        <attr name="zoomEnabled" format="boolean"/>
+        <attr name="quickScaleEnabled" format="boolean"/>
+        <attr name="tileBackgroundColor" format="color"/>
+    </declare-styleable>
+    <declare-styleable name="RoundAngleFrameLayout">
+        <attr name="radius" format="dimension"/>
+        <attr name="topLeftRadius" format="dimension"/>
+        <attr name="topRightRadius" format="dimension"/>
+        <attr name="bottomLeftRadius" format="dimension"/>
+        <attr name="bottomRightRadius" format="dimension"/>
+    </declare-styleable>
+
+
+    <!-- 日历 -->
+    <declare-styleable name="DayPickerView">
+        <attr name="colorCurrentDay" format="color"/>               <!-- 今天字体颜色 -->
+        <attr name="colorSelectedDayBackground" format="color"/>    <!-- 被选中的日期背景颜色 -->
+        <attr name="colorSelectedDayText" format="color"/>          <!-- 被选中的日期字体颜色 -->
+        <attr name="colorPreviousDayText" format="color"/>          <!-- 已过去的日期字体颜色 -->
+        <attr name="colorNormalDayText" format="color"/>           <!-- 正常日期颜色 -->
+        <attr name="colorYearMonthText" format="color"/>           <!-- 头部年份月份字体颜色 -->
+        <attr name="colorWeekText" format="color"/>                <!-- 头部星期几字体颜色 -->
+        <attr name="colorBusyDaysBg" format="color"/>              <!-- 被占用的日期背景颜色 -->
+        <attr name="colorInValidDaysBg" format="color"/>           <!-- 禁用的日期背景颜色 -->
+        <attr name="colorBusyDaysText" format="color"/>            <!-- 被占用的日期字体颜色 -->
+        <attr name="colorInValidDaysText" format="color"/>         <!-- 禁用的日期字体颜色 -->
+
+        <attr name="textSizeDay" format="dimension"/>               <!-- 正常日期字体大小 -->
+        <attr name="textSizeTag" format="dimension"/>               <!-- 标签字体大小 -->
+        <attr name="textSizeYearMonth" format="dimension"/>        <!-- 头部年份月份字体大小 -->
+        <attr name="textSizeWeek" format="dimension"/>             <!-- 头部星期几字体大小 -->
+        <attr name="headerMonthHeight" format="dimension"/>        <!-- 头部高度 -->
+        <attr name="selectedDayRadius" format="dimension"/>        <!-- 日期半径 -->
+        <attr name="calendarHeight" format="dimension"/>           <!-- 行高 -->
+        <attr name="enablePreviousDay" format="boolean"/>          <!-- 已过去的日期是否能被操作 -->
+        <attr name="drawRoundRect" format="boolean"/>
+        <!--<attr name="leastsSeleDaysNum" format="integer" />-->
+        <!--<attr name="mostSeleDaysNum" format="integer" />-->
+        <!--        <attr name="type" format="enum">
+                    <enum name="multiChoice" value="0" />
+                    <enum name="range" value="1" />
+                    <enum name="onlyRead" value="2" />
+                </attr>-->
+        <!--        <attr name="firstMonth" format="enum">
+                    <enum name="january" value="0" />
+                    <enum name="february" value="1" />
+                    <enum name="march" value="2" />
+                    <enum name="april" value="3" />
+                    <enum name="may" value="4" />
+                    <enum name="june" value="5" />
+                    <enum name="july" value="6" />
+                    <enum name="august" value="7" />
+                    <enum name="september" value="8" />
+                    <enum name="october" value="9" />
+                    <enum name="november" value="10" />
+                    <enum name="december" value="11" />
+                </attr>
+                <attr name="lastMonth" format="enum">
+                    <enum name="january" value="0" />
+                    <enum name="february" value="1" />
+                    <enum name="march" value="2" />
+                    <enum name="april" value="3" />
+                    <enum name="may" value="4" />
+                    <enum name="june" value="5" />
+                    <enum name="july" value="6" />
+                    <enum name="august" value="7" />
+                    <enum name="september" value="8" />
+                    <enum name="october" value="9" />
+                    <enum name="november" value="10" />
+                    <enum name="december" value="11" />
+                </attr>-->
+    </declare-styleable>
+    <!--标签空间-->
+    <declare-styleable name="TagFlowLayout">
+        <attr name="auto_select_effect" format="boolean"/>
+        <attr name="max_select" format="integer"/>
+        <attr name="gravity">
+            <enum name="left" value="-1"/>
+            <enum name="center" value="0"/>
+            <enum name="right" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <!--购物车计数器-->
+    <declare-styleable name="AmountView">
+        <!-- 左右2边+-按钮的宽度 -->
+        <attr name="btnWidth" format="dimension"/>
+        <!-- 中间TextView的宽度 -->
+        <attr name="tvWidth" format="dimension"/>
+        <!--<attr name="tvColor" format="color"/>-->
+        <attr name="tvTextSize" format="dimension"/>
+        <attr name="btnTextSize" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="SlideMode">
+        <attr name="mode">
+            <enum name="forbid" value="0"></enum>
+            <enum name="right" value="1"></enum>
+        </attr>
+    </declare-styleable>
+
+    <!--通讯录 标示view-->
+    <declare-styleable name="IndexBar">
+        <attr name="letterSize" format="dimension" />
+        <attr name="letterColor" format="color" />
+        <attr name="focusLetterColor" format="color" />
+        <attr name="letterSpacingExtra" format="float" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:wheel="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/loading"
+    android:layout_width="@dimen/alert_width"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="20dp"
+    android:background="@drawable/dialog_background">
+
+    <ImageView
+        android:id="@+id/custom_image"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/app_name"
+        android:visibility="gone"
+        android:scaleType="fitCenter" />
+
+    <!--error_frame-->
+    <FrameLayout
+        android:id="@+id/error_frame"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/button_layout"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/error_circle" />
+
+        <ImageView
+            android:id="@+id/error_x"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/error_center_x"
+            android:scaleType="center" />
+
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/success_frame"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_above="@+id/button_layout"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/success_bow" />
+
+        <View
+            android:id="@+id/mask_right"
+            android:layout_width="35dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="-13dp"
+            android:layout_gravity="right"
+            android:background="@android:color/white" />
+
+        <View
+            android:id="@+id/mask_left"
+            android:layout_width="21dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="-3dp"
+            android:layout_gravity="left"
+            android:background="@android:color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/success_circle" />
+
+        <com.wmy.main.view.sweetdialog.SuccessTickView
+            android:id="@+id/success_tick"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/warning_frame"
+        android:layout_above="@+id/button_layout"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/warning_circle" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/warning_sigh"
+            android:scaleType="center" />
+    </FrameLayout>
+
+    <!--<FrameLayout-->
+        <!--android:id="@+id/content_frame"-->
+        <!--android:layout_above="@+id/button_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:visibility="visible">-->
+        <!--<include layout="@layout/dialog_date_layout"/>-->
+
+    <!--</FrameLayout>-->
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#575757"
+        android:layout_marginTop="12dp"
+        android:text=""/>
+
+    <TextView
+        android:id="@+id/content_text"
+        android:layout_below="@+id/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:textColor="#797979"
+         android:visibility="gone"/>
+    <!--<TextView-->
+        <!--android:id="@+id/content_update"-->
+        <!--android:layout_marginTop="12dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="16sp"-->
+        <!--android:textAlignment="center"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:gravity="center"-->
+        <!--android:visibility="gone"-->
+        <!--android:textColor="@color/text_wifi"-->
+        <!--android:text="@string/content_update" />-->
+    <!--<TextView-->
+        <!--android:id="@+id/content_wifi"-->
+        <!--android:layout_marginTop="12dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="16sp"-->
+        <!--android:textAlignment="center"-->
+        <!--android:gravity="center"-->
+        <!--android:visibility="gone"-->
+        <!--android:textColor="@color/text_wifi"-->
+        <!--android:text="@string/content_wifi" />-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="12dp"
+        android:background="@color/good_hiht"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="bottom">
+
+        <Button
+            android:id="@+id/cancel_button"
+            style="@style/dialog_orange_button_cancel"
+            android:layout_weight="1"
+            android:background="@null"
+            android:visibility="gone"
+            android:text="@string/dialog_cancel" />
+        <!--android:background="@drawable/dialog_button_cancel"-->
+        <View
+            android:layout_width="1dp"
+            android:background="@color/good_hiht"
+            android:layout_height="match_parent"/>
+        <Button
+            android:id="@+id/confirm_button"
+            style="@style/dialog_orange_button_ok"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="@string/dialog_ok" />
+        <!--  android:background="@drawable/dialog_button"-->
+    </LinearLayout>
+</LinearLayout>
