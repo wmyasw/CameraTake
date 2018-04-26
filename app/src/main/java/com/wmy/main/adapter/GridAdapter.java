@@ -1,9 +1,6 @@
 package com.wmy.main.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +19,6 @@ import com.wmy.main.entity.UplaodEntity;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -75,8 +71,8 @@ public class GridAdapter extends BaseAdapter {
         }
 
 
-        System.out.println(" name: "+  list_data.get(position).getName()+".jpg");
-        DownloadImg(path+list_data.get(position).getName()+".jpg",item.getmImgView());
+        System.out.println(" name: "+  list_data.get(position).getName());
+        DownloadImg(path+list_data.get(position).getName(),item.getmImgView());
         item.setChecked(mSelectMap.get(position) == null ? false: (Boolean) mSelectMap.get(position));
         item.setName(list_data.get(position).getName());
         return convertView;

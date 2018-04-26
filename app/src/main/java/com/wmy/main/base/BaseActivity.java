@@ -1,6 +1,5 @@
 package com.wmy.main.base;
 
-import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -11,7 +10,6 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,29 +23,26 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.lzy.okgo.model.Response;
 import com.wmy.main.R;
-import com.wmy.main.activity.LoginActivity;
 import com.wmy.main.utils.StatusUtil;
 import com.wmy.main.view.statusbar.SystemStatusManager;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 
 import java.util.List;
-import java.util.Set;
 
 import butterknife.ButterKnife;
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import okhttp3.Call;
-import okhttp3.Headers;
 
-public  class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity {
 
     Activity activity;
+
     @SuppressWarnings("unchecked")
     public <T extends View> T findView(int id) {
         return (T) findViewById(id);
     }
+
     public SweetAlertDialog pDialog;
 
     @Override
@@ -55,28 +50,28 @@ public  class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        setStatusBar();
 
-        activity=this;
+        activity = this;
     }
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
         ButterKnife.bind(this);
-        activity=this;
+        activity = this;
     }
 
     @Override
     public void setContentView(View view) {
         super.setContentView(view);
         ButterKnife.bind(this);
-        activity=this;
+        activity = this;
     }
 
     @Override
     public void setContentView(View view, ViewGroup.LayoutParams params) {
         super.setContentView(view, params);
         ButterKnife.bind(this);
-        activity=this;
+        activity = this;
     }
 
     @Override
@@ -88,6 +83,7 @@ public  class BaseActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     public void confirm(String string, SweetAlertDialog.OnSweetClickListener listener) {
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.BUTTON_CONFIRM);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
@@ -103,6 +99,7 @@ public  class BaseActivity extends AppCompatActivity {
         pDialog.setCancelable(true);
         pDialog.show();
     }
+
     /**
      * 子类可以重写改变状态栏颜色
      */
@@ -148,6 +145,7 @@ public  class BaseActivity extends AppCompatActivity {
             tintManager.setStatusBarTintColor(setStatusBarColor());
         }
     }
+
     /**
      * 修改状态栏
      */
@@ -186,6 +184,7 @@ public  class BaseActivity extends AppCompatActivity {
         StatusUtil.StatusBarLightMode(this);
 //        StatusBarUtil.setColor(this,getColor(R.color.title_bg),0);
     }
+
     /**
      * 获取主题色
      */
@@ -203,7 +202,9 @@ public  class BaseActivity extends AppCompatActivity {
         getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValue, true);
         return typedValue.data;
     }
+
     public Toolbar mActionBarToolbar;
+
     public Toolbar getActionBarToolbar() {
         if (mActionBarToolbar == null) {
             mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
@@ -222,6 +223,7 @@ public  class BaseActivity extends AppCompatActivity {
         TextView title = (TextView) mActionBarToolbar.findViewById(R.id.title);
         title.setText(string);
     }
+
     /**
      * 初始化 Toolbar
      */
@@ -235,9 +237,11 @@ public  class BaseActivity extends AppCompatActivity {
     public void initToolBar(Toolbar toolbar, boolean homeAsUpEnabled, int resTitle) {
         initToolBar(toolbar, homeAsUpEnabled, getString(resTitle));
     }
-    public void initToolBar( boolean homeAsUpEnabled, String resTitle) {
+
+    public void initToolBar(boolean homeAsUpEnabled, String resTitle) {
         initToolBar(getActionBarToolbar(), homeAsUpEnabled, resTitle);
     }
+
     public void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
@@ -293,10 +297,49 @@ public  class BaseActivity extends AppCompatActivity {
                 .start();
     }
 
+    public void loading() {
+        if (pDialog == null)
+            pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText("");
+        pDialog.setCancelable(true);
+        pDialog.show();
+    }
+
+
+    public void warning(String string) {
+        if (pDialog == null)
+            pDialog = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText("");
+        pDialog.setCancelText(string);
+        pDialog.setCancelable(false);
+        pDialog.show();
+    }
+
+    public void success(String string) {
+        if (pDialog == null)
+            pDialog = new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText("");
+        pDialog.setContentText(string);
+        pDialog.setCancelable(false);
+        pDialog.show();
+    }
+
+    public void dissmissDialog() {
+        if (pDialog != null) {
+            pDialog.dismissWithAnimation();
+            pDialog = null;
+        }
+
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         dismissLoading();
+        dissmissDialog();
     }
 
 

@@ -1,58 +1,33 @@
 package com.wmy.main.activity;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.model.Response;
 import com.unstoppable.submitbuttonview.SubmitButton;
 import com.wmy.main.R;
 import com.wmy.main.base.BaseActivity;
 import com.wmy.main.common.AppConstant;
 import com.wmy.main.common.JsonCallback;
-import com.wmy.main.common.OkhttpUtil;
-import com.wmy.main.common.PermissionsChecker;
 import com.wmy.main.common.Url;
 import com.wmy.main.entity.ResultEntity;
 import com.wmy.main.login.LoginContext;
 import com.wmy.main.login.LoginedState;
 import com.wmy.main.login.User;
-import com.wmy.main.utils.GsonUtils;
-import com.yanzhenjie.permission.Action;
-import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
-import com.yanzhenjie.permission.Rationale;
 import com.yanzhenjie.permission.setting.PermissionSetting;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Request;
 
 /**
  * @author wmy
@@ -117,7 +92,6 @@ public class LoginActivity extends BaseActivity {
                         final ResultEntity<User> users = response.body();
                         if (users.getErrcode() == 0) {
                             submitbutton.doResult(true);
-                            submitbutton.reset();
                             submitbutton.setOnResultEndListener(new SubmitButton.OnResultEndListener() {
                                 @Override
                                 public void onResultEnd() {
@@ -133,6 +107,7 @@ public class LoginActivity extends BaseActivity {
                                     LoginContext.getLoginContext().setUser(user);
                                     LoginContext.getLoginContext().setUserState(new LoginedState());
                                     statPhotos();
+                                    submitbutton.reset();
                                 }
                             });
                         } else {

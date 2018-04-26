@@ -2,13 +2,11 @@ package com.wmy.main.activity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.PopupWindow;
@@ -17,12 +15,10 @@ import android.widget.TextView;
 import com.wmy.main.R;
 import com.wmy.main.base.BaseActivity;
 import com.wmy.main.common.AppConstant;
-import com.wmy.main.utils.BitmapUtils;
 import com.wmy.main.utils.FileUtils;
+import com.wmy.main.utils.PhotoBitmapUtils;
 import com.wmy.main.view.QNumberPicker;
 import com.wmy.main.view.photoview.PhotoView;
-
-import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -65,13 +61,13 @@ public class ShowActivity extends BaseActivity {
         path = getIntent().getStringExtra(AppConstant.KEY.IMG_PATH);
         Log.d("ShowPicActivity", path);
         img = (PhotoView) findViewById(R.id.img);
-        Bitmap bitmap = BitmapUtils.saveBefore(path);
+        Bitmap bitmap = PhotoBitmapUtils.rotaingImageView(90,BitmapFactory.decodeFile(path));
         if (bitmap == null) {
             showToast("图像不存在");
             finish();
         }
         ;
-        img.setImageBitmap(BitmapFactory.decodeFile(path));
+        img.setImageBitmap(bitmap);
         showPopupWindow();
     }
 

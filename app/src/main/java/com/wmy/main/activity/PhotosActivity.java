@@ -1,31 +1,18 @@
 package com.wmy.main.activity;
 
-import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.ActionMode;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,32 +24,21 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.AbsCallback;
-import com.lzy.okgo.callback.StringCallback;
-import com.lzy.okgo.model.HttpParams;
-import com.lzy.okgo.model.Progress;
-import com.lzy.okgo.request.base.ProgressRequestBody;
-import com.lzy.okgo.request.base.Request;
 import com.wmy.main.R;
 import com.wmy.main.adapter.AutoCompleteAdapter;
 import com.wmy.main.adapter.GridAdapter;
 import com.wmy.main.base.BaseActivity;
 import com.wmy.main.common.AppConstant;
 import com.wmy.main.common.JsonCallback;
-import com.wmy.main.common.TPApp;
 import com.wmy.main.common.Url;
 import com.wmy.main.entity.NewsParper;
 import com.wmy.main.entity.ResultEntity;
 import com.wmy.main.entity.UplaodEntity;
-import com.wmy.main.login.User;
-import com.wmy.main.utils.DateUtil;
+import com.wmy.main.login.LoginContext;
 import com.wmy.main.utils.FileUtils;
 import com.wmy.main.view.CustomDialog;
 import com.yanzhenjie.permission.Action;
@@ -70,9 +46,6 @@ import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -82,20 +55,19 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.MediaType;
-import okhttp3.Response;
 
 public class PhotosActivity extends BaseActivity implements AbsListView.MultiChoiceModeListener {
 
     private static final String TAG = "PhotosActivity";
     private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 919; // 请求码
     public static int REQUEST_CODE = 101;
+
+    public final int DATE_DIALOG = 1;
+    public int mYear, mMonth, mDay;
     @BindView(R.id.upload)
     Button upload;
     String filePath;  //图片路径
@@ -111,12 +83,12 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
     private LinearLayoutManager gManager;
     // 用于存放sdcard卡上的所有图片路径
     public ArrayList<UplaodEntity.ImagesBean> dirAllStrArr = new ArrayList<>();
-    GridAdapter adapter;
-    AutoCompleteAdapter autoCompleteAdapter;
-    Date myDate;
-    List<NewsParper> list;
-    AutoCompleteTextView textView;
-    int newParperId = -1;
+    public GridAdapter adapter;
+    public AutoCompleteAdapter autoCompleteAdapter;
+    public Date myDate;
+    public List<NewsParper> list;
+    public AutoCompleteTextView textView;
+    public int newParperId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,14 +121,18 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
     }
 
 
-    @OnClick({R.id.upload,R.id.btn_del,R.id.btn_selected})
+    @OnClick({R.id.upload, R.id.btn_del, R.id.btn_selected})
     public void click(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.upload:
+                if (adapter.getCheckList() == null || adapter.getCheckList().size() == 0) {
+                    showToast("请选择图片");
+                    return;
+                }
                 showConfirm();
                 break;
             case R.id.btn_del:
-                if(adapter.getCheckList()==null||adapter.getCheckList().size()==0) {
+                if (adapter.getCheckList() == null || adapter.getCheckList().size() == 0) {
                     showToast("请选择图片");
                     return;
                 }
@@ -164,31 +140,24 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
 
-                        if(adapter.getCheckList().size()==dirAllStrArr.size()){
+                        if (adapter.getCheckList().size() == dirAllStrArr.size()) {
                             FileUtils.deleteFiles(AppConstant.filepath);
-                        }else {
-                            for(int i=0;i<adapter.getCheckList().size();i++){
+                        } else {
+                            for (int i = 0; i < adapter.getCheckList().size(); i++) {
                                 FileUtils.deleteFile(adapter.getCheckList().get(i).getFile_stream().getPath());
                             }
                         }
-                        dirAllStrArr.clear();
-                        try {
-                            DirAll(new File(AppConstant.filepath));
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        adapter.notifyDataSetChanged();
+                        redata();
                         sweetAlertDialog.dismissWithAnimation();
                     }
                 });
                 break;
             case R.id.btn_selected:
-                if(dirAllStrArr==null||dirAllStrArr.size()==0) return;
-                if(dirAllStrArr.size()==mSelectMap.size()){
+                if (dirAllStrArr == null || dirAllStrArr.size() == 0) return;
+                if (dirAllStrArr.size() == mSelectMap.size()) {
                     reverseSelection();
                     btn_selected.setText("全选");
-                }
-                else {
+                } else {
                     btn_selected.setText("反选");
                     selectAll();
                 }
@@ -198,11 +167,26 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
     }
 
     /**
+     * 重置数据
+     */
+    private void redata() {
+        mSelectMap.clear();
+        if (dirAllStrArr != null)
+            dirAllStrArr.clear();
+        try {
+            DirAll(new File(AppConstant.filepath));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    /**
      * 全选
      */
-    private void selectAll(){
-        for(int i=0;i<dirAllStrArr.size();i++){
-            mSelectMap.put(i,  true );/* 放入选中的集合中 */
+    private void selectAll() {
+        for (int i = 0; i < dirAllStrArr.size(); i++) {
+            mSelectMap.put(i, true);/* 放入选中的集合中 */
             gridview.setItemChecked(i, mSelectMap.get(i));
         }
         adapter.notifyDataSetChanged();
@@ -211,7 +195,7 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
     /**
      * 反选
      */
-    private void reverseSelection(){
+    private void reverseSelection() {
         mSelectMap.clear();
 //        for(int i=0;i<dirAllStrArr.size();i++){
 //            mSelectMap.put(i,false );/* 放入选中的集合中 */
@@ -219,6 +203,7 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
 //        }
         adapter.notifyDataSetChanged();
     }
+
     /**
      * 获取联想输入信息
      *
@@ -226,7 +211,7 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
      */
     private void getTitle(String name) {
 //
-        OkGo.<ResultEntity<NewsParper>>post( AppConstant.getAppConstant().getBaseUrl()+Url.get_newsparper_name)//
+        OkGo.<ResultEntity<NewsParper>>post(AppConstant.getAppConstant().getBaseUrl() + Url.get_newsparper_name)//
                 .tag(this)//
                 .isMultipart(true)       // 强制使用 multipart/form-data 表单上传（只是演示，不需要的话不要设置。默认就是false）
                 .params("name", name)        // 这里可以上传参数
@@ -234,15 +219,13 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
                     @Override
                     public void onError(com.lzy.okgo.model.Response<ResultEntity<NewsParper>> response) {
                         super.onError(response);
-                        dissmissDialog();
                     }
 
                     @Override
                     public void onSuccess(com.lzy.okgo.model.Response<ResultEntity<NewsParper>> response) {
 
                         if (response.isSuccessful()) {
-                            dissmissDialog();
-                            showToast(response.body().getErrmsg());
+//                            showToast(response.body().getErrmsg());
                             list = response.body().getData();
                             autoCompleteAdapter.setData(list);
 //                            autoCompleteAdapter.notifyDataSetChanged();
@@ -259,34 +242,27 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
      */
     private void uploadFiles(String url, List<UplaodEntity.ImagesBean> files) throws IOException {
         final MediaType mediaType = MediaType.parse("application/octet-stream; charset=utf-8");
-        List<HttpParams.FileWrapper> list=new ArrayList<>();
+//        List<HttpParams.FileWrapper> list = new ArrayList<>();
+        List<File> list = new ArrayList<>();
+        List<String> names = new ArrayList<>();
         for (UplaodEntity.ImagesBean imagesBean : files) {
-            HttpParams.FileWrapper fileWrapper=new HttpParams.FileWrapper(imagesBean.getFile_stream(),imagesBean.getName(),mediaType);
-            list.add(fileWrapper);
+//            HttpParams.FileWrapper fileWrapper = new HttpParams.FileWrapper(imagesBean.getFile_stream(), imagesBean.getName(), mediaType);
+            list.add(imagesBean.getFile_stream());
+            names.add(imagesBean.getName());
 
         }
-        OkGo.<ResultEntity<Object>>post( AppConstant.getAppConstant().getBaseUrl()+url)//
+
+        OkGo.<ResultEntity<Object>>post(AppConstant.getAppConstant().getBaseUrl() + url)//
                 .tag(this)//
                 .isMultipart(true)       // 强制使用 multipart/form-data 表单上传（只是演示，不需要的话不要设置。默认就是false）
                 .params("name", textView.getText() + "")        // 这里可以上传参数
-                .params("user_id", "1")   // 可以添加文件上传
+                .params("user_id", LoginContext.getLoginContext().getUser().getUser_id())   // 可以添加文件上传
                 .params("update_time", et_date_v.getText() + "")   // 可以添加文件上传
+                .params("image_names", new Gson().toJson(names))
                 .params("id", "1")   // 可以添加文件上传
-                .addFileWrapperParams("images", list)    // 这里支持一个key传多个文件
-                .uploadInterceptor(new ProgressRequestBody.UploadInterceptor() {
-                    @Override
-                    public void uploadProgress(Progress progress) {
-                        if (pDialog != null) {
-                            if(pDialog.isShowing())
-                                pDialog.getProgressHelper().setProgress(progress.fraction);
-                            if(progress.fraction==1){
-                                pDialog.dismiss();
-                            }
-                        }
-                    }
-                })
-//                .upJson(json.toString())
+                .addFileParams("images", list)    // 这里支持一个key传多个文件
                 .execute(new JsonCallback<ResultEntity<Object>>() {
+
                     @Override
                     public void onError(com.lzy.okgo.model.Response<ResultEntity<Object>> response) {
                         super.onError(response);
@@ -298,10 +274,11 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
                     @Override
                     public void onSuccess(com.lzy.okgo.model.Response<ResultEntity<Object>> response) {
 //                        success(response.body().getErrmsg());
-                        if(response.body()!=null &&response.body().getErrcode()==0){
+                        if (response.body() != null && response.body().getErrcode() == 0) {
                             showToast(response.body().getErrmsg());
                         }
                         dissmissDialog();
+//                        dissmissDialog();
                     }
                 });
     }
@@ -336,6 +313,7 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
 
     /**
      * 初始化图片集
+     *
      * @throws Exception
      */
     private void initGrid() throws Exception {
@@ -467,12 +445,12 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
                             UplaodEntity.ImagesBean map = new UplaodEntity.ImagesBean();
                             // 如果遇到文件则放入数组
                             if (dirFile.getPath().endsWith(File.separator)) {
-                                map.setName(file.getName().substring(0, file.getName().length() - 4));
+                                map.setName(file.getName());
 //                            map.put("path",dirFile.getPath()+ file.getName());
                                 map.setFile_stream(file);
                                 dirAllStrArr.add(map);
                             } else {
-                                map.setName(file.getName().substring(0, file.getName().length() - 4));
+                                map.setName(file.getName());
 //                            map.put("path",dirFile.getPath()+ file.getName());
                                 map.setFile_stream(file);
                                 dirAllStrArr.add(map);
@@ -553,6 +531,7 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
         customDialog = alert.create();
         textView = customDialog.findViewById(R.id.tv_title_v);
         et_date_v = customDialog.findViewById(R.id.et_date_v);
+        display();
         select_date = customDialog.findViewById(R.id.select_date);
         setAdapter();
         select_date.setOnClickListener(new View.OnClickListener() {
@@ -561,19 +540,32 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
                 showDialog(DATE_DIALOG);
             }
         });
+        textView.setOnItemSelectedListener(null);
         textView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                NewsParper obj = (NewsParper) parent.getItemAtPosition(position);
+                NewsParper obj = (NewsParper) autoCompleteAdapter.getSelectItem(position);
                 textView.setText(obj.getName());
                 newParperId = obj.getId();
             }
 
         });
-        textView.add
+        textView.setOnFocusChangeListener(new android.view.View.
+                OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 此处为得到焦点时的处理内容
+                    System.out.println("*********获取焦点***********");
+                    getTitle("");
+                } else {
+                    // 此处为失去焦点时的处理内容
+                }
+            }
+        });
         textView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -582,7 +574,7 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                getTitle(charSequence.toString());
+                getTitle(textView.getText() + "");
 
             }
 
@@ -596,8 +588,6 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
 
     }
 
-    final int DATE_DIALOG = 1;
-    int mYear, mMonth, mDay;
 
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -631,41 +621,6 @@ public class PhotosActivity extends BaseActivity implements AbsListView.MultiCho
         }
     };
 
-    private void loading() {
-        if (pDialog == null)
-            pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("");
-        pDialog.setCancelable(false);
-        pDialog.show();
-    }
-
-
-    private void warning(String string) {
-        if (pDialog == null)
-         pDialog = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("");
-        pDialog.setCancelText(string);
-        pDialog.setCancelable(false);
-        pDialog.show();
-    }
-
-    private void success(String string) {
-        if (pDialog == null)
-        pDialog = new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("");
-        pDialog.setContentText(string);
-        pDialog.setCancelable(false);
-        pDialog.show();
-    }
-
-    private void dissmissDialog() {
-        if (pDialog != null)
-            pDialog.dismissWithAnimation();
-
-    }
 
     private void setAdapter() {
         list = new ArrayList<>();

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Take_Picture</string>
+    <string name="app_name">拍照上传</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">请输入用户名</string>
